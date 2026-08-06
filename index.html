@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Secure Card Vault</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="home-container" id="app">
+      <div class="home-card" id="homeCard">
+        <h1>🔒 Secure Card Vault System</h1>
+        <p class="hero-subtitle">Secure Payment | Tokenization | Secure Storage</p>
+
+        <div class="menu-list">
+          <button class="menu-btn" data-page="save">
+            <span class="menu-icon">💳</span>
+            <span>Save Card</span>
+          </button>
+          <button class="menu-btn" data-page="pay">
+            <span class="menu-icon">💰</span>
+            <span>Pay Using Token</span>
+          </button>
+          <button class="menu-btn" data-page="history">
+            <span class="menu-icon">📜</span>
+            <span>Transaction History</span>
+          </button>
+        </div>
+
+
+      </div>
+
+      <div class="page-card hidden" id="saveCardPage">
+        <h2>💳 Save Your Card</h2>
+
+        <form id="saveCardForm" class="card-form">
+          <div id="saveMessage" class="status-message" role="status"></div>
+
+          <label>
+            Card Holder Name
+            <input type="text" id="holderName" placeholder="John Doe" required />
+          </label>
+
+          <label>
+            Card Number
+            <input type="text" id="cardNumber" placeholder="4111 1111 1111 1111" inputmode="numeric" maxlength="19" required />
+          </label>
+
+          <div class="form-row">
+            <label>
+              Expiry Date
+              <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5" required />
+            </label>
+            <label>
+              CVV
+              <input type="password" id="cvv" placeholder="123" maxlength="3" required />
+            </label>
+          </div>
+
+          <button type="submit" class="primary-btn">Save Card</button>
+        </form>
+      </div>
+
+      <div class="page-card success-card hidden" id="successPage">
+        <div class="success-icon">✔</div>
+        <h3 id="successTitle">Card Saved Successfully</h3>
+        <p class="success-label" id="successMessage">Card saved successfully</p>
+        <p class="success-label">Generated Token</p>
+        <div class="token-box" id="generatedToken">TKN-45879ABCD</div>
+        <button class="primary-btn" id="continueBtn">Continue</button>
+      </div>
+
+      <div class="page-card hidden" id="payPage">
+        <h2>💰 Pay Using Token</h2>
+
+        <form id="payForm" class="card-form">
+          <label>
+            Saved Token
+            <input type="text" id="savedToken" placeholder="TKN-45879ABCD" required />
+          </label>
+
+          <label>
+            Amount
+            <input type="number" id="amount" placeholder="100" required />
+          </label>
+
+          <button type="submit" class="primary-btn">Pay Now</button>
+        </form>
+      </div>
+
+      <div class="page-card success-card hidden" id="paymentSuccessPage">
+        <div class="success-icon">✔</div>
+        <h3>Payment Successful</h3>
+        <p class="success-label">Transaction ID</p>
+        <div class="token-box" id="transactionId">TXN-001245</div>
+        <p class="success-label">Status</p>
+        <div class="token-box">SUCCESS</div>
+        <button class="primary-btn" id="homeFromPaymentBtn">Home</button>
+      </div>
+
+      <div class="page-card hidden" id="historyPage">
+        <h2>📜 Transaction History</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Token</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>TKN45879ABCD</td>
+                <td>$100</td>
+                <td>Success</td>
+                <td>28-07-2026</td>
+              </tr>
+              <tr>
+                <td>TKN45879ABCD</td>
+                <td>$50</td>
+                <td>Success</td>
+                <td>29-07-2026</td>
+              </tr>
+              <tr>
+                <td>TKN45879ABCD</td>
+                <td>$80</td>
+                <td>Failed</td>
+                <td>30-07-2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button class="primary-btn" id="homeFromHistoryBtn">Back to Home</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
